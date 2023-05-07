@@ -1,0 +1,28 @@
+1. film tablosunda bulunan rental_rate sütunundaki değerlerin ortalaması nedir?
+2. film tablosunda bulunan filmlerden kaç tanesi 'C' karakteri ile başlar?
+3. film tablosunda bulunan filmlerden rental_rate değeri 0.99 a eşit olan en uzun (length) film kaç dakikadır?
+4. film tablosunda bulunan filmlerin uzunluğu 150 dakikadan büyük olanlarına ait kaç farklı replacement_cost değeri vardır?
+
+film tablosunda bulunan rental_rate sütunundaki değerlerin ortalamasını sorgulamak için aşağıdaki SQL sorgusu kullanılabilir:
+SELECT AVG(rental_rate)
+FROM film;
+
+
+film tablosunda bulunan filmlerden kaç tanesinin 'C' karakteri ile başladığını sorgulamak için aşağıdaki SQL sorgusu kullanılabilir:
+SELECT COUNT(*)
+FROM film
+WHERE title LIKE 'C%';
+
+
+film tablosunda bulunan filmlerden rental_rate değeri 0.99'a eşit olan en uzun film kaç dakikadır? için aşağıdaki SQL sorgusu kullanılabilir:
+SELECT MAX(length)
+FROM film
+WHERE rental_rate = 0.99;
+Bu sorgu ile en uzun film süresi bulunur ve bu süre MAX fonksiyonu ile alınır.
+
+
+film tablosunda bulunan filmlerin uzunluğu 150 dakikadan büyük olanlarına ait kaç farklı replacement_cost değeri vardır? için aşağıdaki SQL sorgusu kullanılabilir:
+SELECT COUNT(DISTINCT replacement_cost)
+FROM film
+WHERE length > 150;
+Bu sorgu ile 150 dakikadan büyük filmler seçilir ve bu filmlerin replacement_cost değerleri DISTINCT fonksiyonu ile sayılır.

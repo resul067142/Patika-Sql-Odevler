@@ -1,0 +1,36 @@
+1. film tablosunda bulunan filmleri rating değerlerine göre gruplayınız.
+2. film tablosunda bulunan filmleri replacement_cost sütununa göre grupladığımızda film sayısı 50 den fazla
+    olan replacement_cost değerini ve karşılık gelen film sayısını sıralayınız.
+3. customer tablosunda bulunan store_id değerlerine karşılık gelen müşteri sayılarını nelerdir?
+4. city tablosunda bulunan şehir verilerini country_id sütununa göre gruplandırdıktan sonra en fazla şehir sayısı
+    barındıran country_id bilgisini ve şehir sayısını paylaşınız.
+
+    1. film tablosunda bulunan filmleri rating değerlerine göre gruplamak için aşağıdaki SQL sorgusu kullanılabilir:
+    SELECT rating, COUNT(*) AS count
+    FROM film
+    GROUP BY rating;
+
+
+   2. film tablosunda bulunan filmleri replacement_cost sütununa göre grupladığımızda film sayısı 50'den fazla olan replacement_cost değerlerini ve karşılık gelen film sayısını sıralamak için aşağıdaki SQL sorgusu kullanılabilir:
+    SELECT replacement_cost, COUNT(*) AS count
+    FROM film
+    GROUP BY replacement_cost
+    HAVING COUNT(*) > 50
+    ORDER BY count DESC;
+    Bu sorgu ile film tablosundaki replacement_cost değerlerine göre gruplama yapılır ve her bir replacement_cost değerine karşılık gelen film sayısı hesaplanır. Ardından, film sayısı 50'den fazla olan replacement_cost değerleri HAVING koşulu ile seçilir ve count değişkenine göre büyükten küçüğe sıralanır.
+
+
+    3. customer tablosunda bulunan store_id değerlerine karşılık gelen müşteri sayılarını bulmak için aşağıdaki SQL sorgusu kullanılabilir:
+    SELECT store_id, COUNT(*) AS count
+    FROM customer
+    GROUP BY store_id;
+    Bu sorgu ile customer tablosundaki store_id değerlerine göre gruplama yapılır ve her bir store_id değerine karşılık gelen müşteri sayısı hesaplanır.
+
+
+    4. city tablosunda bulunan şehir verilerini country_id sütununa göre gruplandırdıktan sonra en fazla şehir sayısı barındıran country_id bilgisini ve şehir sayısını bulmak için aşağıdaki SQL sorgusu kullanılabilir:
+    SELECT country_id, COUNT(*) AS count
+    FROM city
+    GROUP BY country_id
+    ORDER BY count DESC
+    LIMIT 1;
+    Bu sorgu ile city tablosundaki şehir verileri country_id sütununa göre gruplandırılır ve her bir country_id değerine karşılık gelen şehir sayısı hesaplanır. Sonrasında count değişkenine göre büyükten küçüğe sıralanır ve LIMIT 1 kullanılarak en fazla şehir sayısına sahip olan country_id bilgisi ve şehir sayısı seçilir.
